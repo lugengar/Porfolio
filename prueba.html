@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Automático con Pausa</title>
+  <style>
+    #miLista {
+      width: 300px;
+      height: 200px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      border: 1px solid black;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+        width: 10vh;
+        height: 10vh;
+        background-color: lightblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ccc;
+    }
+    ul {
+        width: max-content;
+        height: 10vh;
+        display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="miLista">
+    <ul>
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+      <li>Elemento 4</li>
+      <li>Elemento 5</li>
+      <li>Elemento 6</li>
+      <li>Elemento 7</li>
+      <li>Elemento 8</li>
+      <li>Elemento 9</li>
+      <li>Elemento 10</li>
+    </ul>
+  </div>
+
+  <script>
+    const lista = document.getElementById('miLista');
+    let scrollInterval;
+    let isScrolling = true;  // Control para saber si está corriendo la animación
+
+    // Función para iniciar el desplazamiento automático
+    function startScroll() {
+      scrollInterval = setInterval(() => {
+        lista.scrollLeft += 1; // Desplazar hacia la derecha 1px
+        if (lista.scrollLeft + lista.clientWidth >= lista.scrollWidth) {
+          lista.scrollLeft = 0; // Volver al principio
+        }
+      }, 50); // Ajusta la velocidad del scroll
+    }
+
+    // Función para detener el desplazamiento automático
+    function stopScroll() {
+      clearInterval(scrollInterval); // Detener el desplazamiento
+    }
+
+    // Iniciar el desplazamiento automático al cargar la página
+    startScroll();
+
+    // Detener el desplazamiento cuando el usuario hace clic sobre el scroll
+    lista.addEventListener('mousedown', () => {
+      stopScroll();
+    });
+
+    // Reanudar el desplazamiento después de unos segundos luego de soltar el scroll
+    lista.addEventListener('mouseup', () => {
+      setTimeout(() => {
+        if (!isScrolling) {
+          startScroll();
+        }
+      }, 500); // Espera 2 segundos antes de reanudar
+    });
+
+    // También detener el scroll si el usuario hace un clic fuera del área (opcional)
+    lista.addEventListener('mouseleave', () => {
+      stopScroll();
+    });
+  </script>
+
+</body>
+</html>

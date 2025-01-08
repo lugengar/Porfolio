@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+:root {
+    /*TEMA OSCURO*/
+    --titulo: #54A9FF;
+    --parrafo: white;
+    --fondo: #1A1A1A;
+    --fondoopacidad: 20%;
+}
+
+h1{
+    font-size: 8vh;
+    color: var(--titulo);
+    text-decoration: underline;
+}
+p{
+    font-size: 4vh;
+    color: var(--parrafo);
+}
+h1, p {
+    margin: 0;
+    font-family: "Silkscreen", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.capa{
+    overflow-x: hidden;
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    height: max-content;
+    display: grid;
+    grid-template:
+    "HOME HOME HOME"100vh
+    "HEA HEA HEA"8vh
+    "INFO INFO INFO"100vh
+    "PROY PROY PROY"100vh
+    "CONT CONT CONT"100vh/
+    auto auto auto;
+    background-color: var(--fondo);
+    z-index: -1;
+   
+}
+.fondo{
+    background-image: url(../SVG/cubito.svg);
+    background-size: 3.5vh;
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    opacity: var(--fondoopacidad);
+    height: 100%;
+    z-index: -2;
+    animation: fondo infinite 60s linear;
+}
+.fondo2{
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    z-index: -2;
+}
+@keyframes fondo {
+    0%{
+        background-position-x: -100%;
+        background-position-y: -100%;
+    }
+    100%{
+        background-position-x: 100%;
+        background-position-y: 100%;
+    }
+}
+#HOME{
+    position: relative;
+
+    grid-area: HOME;
+    display: grid;
+    grid-template:
+    ". M3D . . ."auto
+    ". M3D . TIT ."75vh
+    ". M3D . . ."auto/
+    auto 65vh 5vh 70vh auto;
+}
+
+.modelo3d{
+    position: relative;
+    grid-area: M3D;
+}
+.modelo3d iframe{
+    filter: brightness(90%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top:0%;
+    pointer-events: none;
+}
+.titulo{
+    grid-area: TIT;
+    display: grid;
+    grid-template:
+    " . "auto
+    " TIT2"max-content
+    " PAR "max-content
+    ". "auto/
+    auto  ;
+
+}
+.titulo h1{
+    grid-area: TIT2;
+    text-align: center;
+}
+.titulo p{
+    grid-area: PAR;
+    text-align: center;
+
+}
+#INFO{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    grid-area: INFO;
+    position: relative;
+}
+#PROY{
+
+    grid-area: PROY;
+}
+#CONT{
+    grid-area: CONT;
+
+}
+#HEA{
+    top: 0;
+    grid-area: HEA;
+    z-index: 1000;
+    display: grid;
+    position: sticky;
+}
+
+.objeto{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+z-index: -1;
+}
+.circulo{
+background-image: url(../SVG/circulo.svg);
+width: 40vh;
+height: 40vh;
+}
+.punta1{
+    left: -5vh;
+    top: -15vh;
+}
+.punta2{
+    right: -5vh;
+    bottom: -15vh;
+}
+.rayo{
+    background-image: url(../SVG/rayos.svg);
+    width: 50vh;
+    height: 50vh;
+}
+.punta3{
+    right: -25vh;
+    top: -25vh;
+}
+.punta4{
+    left: -25vh;
+    bottom: -25vh;
+}
+
+.linea{
+    background-image: url(../SVG/lineas.svg);
+    width: 30vh;
+    height: 20vh;
+}
+.direccion1{
+    right: -15vh;
+    bottom: 25vh;
+}
+.direccion2{
+    left: -15vh;
+    top: 25vh;
+}
+.estrella{
+    background-image: url(../SVG/estrella.svg);
+    width: 15vh;
+    height: 15vh;
+}
+.direccion3{
+    right: 40vh;
+    top: 15vh;
+}
+.direccion4{
+    left: 40vh;
+    bottom: 15vh;
+}
+@media (max-width: 968px) {
+    h1{
+        font-size: 6vh;
+        color: var(--titulo);
+        text-decoration: underline;
+    }
+    p{
+        font-size: 3vh;
+        color: var(--parrafo);
+    }
+    #HOME{
+        position: relative;
+
+        grid-area: HOME;
+        display: grid;
+        grid-template:
+        ". . ."auto
+        "M3D . TIT"75vh
+        ". . ."auto/
+        50vh 2vh auto ;
+    }
+}
+
+@media (max-width: 696px) {
+    .titulo{
+        gap: 0;
+        grid-area: TIT;
+        display: grid;
+        grid-template:
+        " TIT2"max-content
+        " PAR "max-content
+        ". "auto/
+        auto  ;
+        transform: translateY(-6vh);
+    }
+    h1{
+        font-size: 6vh;
+        color: var(--titulo);
+        text-decoration: underline;
+    }
+    p{
+        font-size: 3vh;
+        color: var(--parrafo);
+    }
+    #HOME{
+        grid-area: HOME;
+        position: relative;
+        display: grid;
+        grid-template:
+        "M3D M3D M3D"auto
+        ". TIT ."30vh
+        ". .  ."10vh/
+        2% auto 2%;
+    }
+    .circulo{
+        background-image: url(../SVG/circulo.svg);
+        width: 30vh;
+        height: 30vh;
+        }
+        
+        .rayo{
+            background-image: url(../SVG/rayos.svg);
+            width: 40vh;
+            height: 40vh;
+        }
+        
+        .linea{
+            background-image: url(../SVG/lineas.svg);
+            width: 25vh;
+            height: 20vh;
+        }
+      
+        .estrella{
+            background-image: url(../SVG/estrella.svg);
+            width: 10vh;
+            height: 10vh;
+        }
+        .direccion1{
+            right: -15vh;
+            bottom: 35vh;
+        }
+        .direccion2{
+            left: -15vh;
+            top: 35vh;
+        }
+}
+
+

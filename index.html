@@ -1,1 +1,64 @@
-pagina en proceso
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="assets/CSS/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="capa">
+        
+        <div class="fondo2">
+           
+        </div>
+        <div class="fondo">
+        </div>
+    <header id="HEA">
+    
+    </header>
+    <section id="HOME">
+        <div class="objeto circulo punta1"></div>
+        <div class="objeto circulo punta2"></div>
+        <div class="objeto rayo punta3"></div>
+        <div class="objeto rayo punta4"></div>
+        <div class="objeto linea direccion1"></div>
+        <div class="objeto linea direccion2"></div>
+        <div class="objeto estrella direccion3"></div>
+        <div class="objeto estrella direccion4"></div>
+        <div class="titulo">
+            <h1>Mi Portafolio</h1>
+            <p>Descubre una selección de mis diseños web creativos.</p>
+        </div>
+        <div class="modelo3d">
+            <iframe id="modelo3d" src="./assets/modelo3d/modelo3d.html" frameborder="0"></iframe>
+        </div>
+    </section>
+    <section id="INFO">
+        <h1>En proceso</h1>
+    </section>
+
+    <section id="PROY">
+       
+    </section>
+
+    <footer id="CONT">
+    </footer>
+</div>
+</body>
+</html>
+
+
+<script>
+    const iframe = document.getElementById('modelo3d');
+
+    window.addEventListener('mousemove', (event) => {
+        const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        // Enviar las coordenadas al iframe
+        iframe.contentWindow.postMessage({ mouseX, mouseY }, '*');
+    });
+</script>
